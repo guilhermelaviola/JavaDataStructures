@@ -1,4 +1,4 @@
-package DataStructures.examples.linearQueue;
+package com.java.data_structures.linear.Queue;
 
 import java.util.*;
 

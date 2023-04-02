@@ -1,4 +1,4 @@
-package DataStructures.examples.linear.Stack;
+package com.java.data_structures.linear.stack;
 
 // Stack follows the LIFO logic: Last In, First Out
 public class Stack {

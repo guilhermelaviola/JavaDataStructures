@@ -1,4 +1,4 @@
-package DataStructures.examples.linear.Stack;
+package com.java.data_structures.linear.stack;
 
 public class Test {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package DataStructures.examples.hierarchical.Map;
+package com.java.data_structures.hierarchical.map;
 
 import java.util.HashMap;
 

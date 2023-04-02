@@ -1,4 +1,4 @@
-package DataStructures.examples.linear.LinkedList;
+package com.java.data_structures.linkedlist;
 
 // Linear data structure that consists of a collection of multiple nodes
 public class LinkedListExample {
