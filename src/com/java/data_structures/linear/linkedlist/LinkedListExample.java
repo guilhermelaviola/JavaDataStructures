@@ -1,4 +1,6 @@
-package com.java.data_structures.linkedlist;
+package com.java.data_structures.linear.linkedlist;
+
+import java.util.LinkedList;
 
 // Linear data structure that consists of a collection of multiple nodes
 public class LinkedListExample {
@@ -54,24 +56,15 @@ public class LinkedListExample {
 				currNode = currNode.next;
 			}
 		}
-		// Test
-		public static void main(String[] args) {
-
-			// Creating the LinkedListExample Object (an empty list)
-			LinkedListExample list = new LinkedListExample();
-
-			// Inserting data into the LinkedList
-			list = insert(list, 14);
-			list = insert(list, 21);
-			list = insert(list, 20);
-			list = insert(list, 29);
-			list = insert(list, 33);
-			list = insert(list, 31);
-			list = insert(list, 13);
-			list = insert(list, 19);
-
-			// Printing the LinkedList
-			printList(list);
-		}	
+		
+		public static LinkedList<Integer> searchValuePositions(Integer x, LinkedList<Integer> list){
+			LinkedList<Integer> a = new LinkedList<>();
+			for (int i = 0; i < list.size(); i++) {
+				if (x == list.get(i)) {
+					a.add(i);
+				}
+			}
+			return a;
+		}
 	}
 }
