@@ -33,6 +33,14 @@ public class LinkedListTest {
 		LinkedList vp = node.searchValuePositions(1, list1);
 		System.out.println(vp);
 		System.out.println(list1);
-
+		
+		LinkedList<String> sentence = new LinkedList<>();
+		
+		sentence.add("The");
+		sentence.add("sky");
+		sentence.add("is");
+		sentence.add("blue.");
+				
+		node.revertStringList(sentence);
 	}
 }

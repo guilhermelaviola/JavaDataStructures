@@ -66,5 +66,17 @@ public class LinkedListExample {
 			}
 			return a;
 		}
+		
+		public static LinkedList<String> revertStringList(LinkedList<String> list) {
+			LinkedList<String> original = new LinkedList<>();
+			LinkedList<String> reverted = new LinkedList<>();
+			
+			int i = 0;
+			while (i < original.size()) {
+				reverted.addFirst(original.get(i));
+				i++;
+			}
+			return reverted;
+		}
 	}
 }
