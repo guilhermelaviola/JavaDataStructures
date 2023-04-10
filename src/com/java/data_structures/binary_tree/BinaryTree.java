@@ -70,6 +70,95 @@ public class BinaryTree {
 		return(node);
 	}
 	
+	public void preOrder() {
+		preOrder(root);
+		System.out.println("");
+	}
+	
+	public void preOrder(Node root) {
+		if (root == null) {
+			return;
+		}
+		System.out.println(root.data + " ");
+		preOrder(root.left);
+		preOrder(root.right);
+	}
+	
+	public void inOrder() {
+		inOrder(root);
+		System.out.println("");
+	}
+	
+	public void inOrder(Node root) {
+		if (root == null) {
+			return;
+		}
+		preOrder(root.left);
+		System.out.println(root.data + " ");
+		preOrder(root.right);
+	}
+	
+	public void postOrder() {
+		postOrder(root);
+		System.out.println("");
+	}
+	
+	public void postOrder(Node root) {
+		if (root == null) {
+			return;
+		}
+		postOrder(root.left);
+		postOrder(root.right);
+		System.out.println(root.data + " ");
+	}
+	
+	public int findMin() {
+		return findMin(root);
+	}
+	
+	public int findMin(Node root) {
+		if (root.left == null) {
+			return root.data;
+		}
+		return findMin(root.left);
+	}
+	
+	public int findMax() {
+		return findMax(root);
+	}
+	
+	public int findMax(Node root) {
+		if (root.right == null) {
+			return root.data;
+		}
+		return findMax(root.right);
+	}
+	
+	public int size() {
+		return size(root);
+	}
+	
+	public int size(Node root) {
+		if (root == null) {
+			return 0;
+		}
+		return 1 + size(root.left) + size(root.right);
+	}
+	
+	public int maxDepth() {
+		return maxDepth(root);
+	}
+	
+	public int maxDepth(Node root) {
+		if (root == null) {
+			return 0;
+		}else {
+			int leftDepth = maxDepth(root.left);
+			int rightDepth = maxDepth(root.right);
+			return 1 + Math.max(leftDepth, rightDepth);
+		}
+	}
+	
 	// This method goes through the tree until it finds the value, returning true
 	public boolean lookup(int data) {
 		return(lookup(root, data));

@@ -10,8 +10,8 @@ public class BinarySearchTree {
 		bst.insert(3);
 		bst.insert(2);
 		//bst.printTree();
-		//bst.printPostorder();
-		//bst.printPreorder();
+		bst.postOrder();
+		bst.preOrder();
 		System.out.println(bst.lookup(5));
 		System.out.println(bst.lookup(2));
 		//System.out.println(bst.size());
