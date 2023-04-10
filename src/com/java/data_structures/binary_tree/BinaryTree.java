@@ -1,5 +1,8 @@
 package com.java.data_structures.binary_tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*
  * The binary tree data structure in Java is not linear but rather, hierarchical.
  * This means that the top-most element is the "root" of the tree, and all other
@@ -159,6 +162,123 @@ public class BinaryTree {
 		}
 	}
 	
+	public boolean contains(int data) {
+		return contains(data, root);
+	}
+	
+	public boolean contains(int data, Node root) {
+		if (root == null) {
+			return false;
+		}
+		if (data == root.data) {
+			return true;
+		}else if (data < root.data) {
+			return contains(data, root.left);
+		}else {
+			return contains(data, root.right);
+		}
+	}
+	
+	public void printBreadthCourse() {
+		
+	}
+	
+	public void printBreadthCourse(Node node) {
+		Queue<Node> breadth = new LinkedList<>();
+		Queue<Node> copy = new LinkedList<>();
+		breadth.add(node);
+		copy.add(node);
+		Node visitor = node;
+		while (!breadth.isEmpty()) {
+			if (visitor.left != null) {
+				breadth.add(visitor.left);
+				copy.add(visitor.right);
+			}
+			if (visitor.right != null) {
+				breadth.add(visitor.right);
+				copy.add(visitor.right);
+			}
+			System.out.println(visitor.data + " ");
+		}
+		System.out.println("\nEmpty queue? " + breadth.isEmpty());
+		System.out.println("Empty copied queue? " + copy.isEmpty());
+		System.out.println("Amount of elements: " + copy.size());
+	}
+	
+	public Queue<Integer> breadthCourse(){
+		return breadthCourse(root);
+	}
+	
+	public Queue<Integer> breadthCourse(Node root){
+		Queue<Node> breadth = new LinkedList<>();
+		Queue<Integer> def = new LinkedList<>();
+		breadth.add(root);
+		def.add(root.data);
+		Node visitor = null;
+		while (!breadth.isEmpty()) {
+			visitor = breadth.remove();
+			if (visitor.left != null) {
+				breadth.add(visitor.left);
+				def.add(visitor.left.data);
+			}
+			if (visitor.right != null) {
+				breadth.add(visitor.right);
+				def.add(visitor.right.data);
+			}
+		}
+		return def;
+	}
+	
+	public int FB(Node root) {
+		return maxDepth(root.left) - maxDepth(root.right);
+	}
+	
+	public void displayNodesAndFB() {
+		displayNodesAndFB(root);
+	}
+	
+	public void displayNodesAndFB(Node root) {
+		Queue<Node> breadth = new LinkedList<>();
+		
+		breadth.add(root);
+		
+		Node visitor = null;
+		while (!breadth.isEmpty()) {
+			visitor = breadth.remove();
+			if (visitor.left != null) {
+				breadth.add(visitor.left);
+			}
+			if (visitor.right != null) {
+				breadth.add(visitor.right);
+			}
+			System.out.println("[" + visitor.data + ", " + FB(visitor) + "] ");
+		}
+	}
+	
+	public void breadthFirstSearch() {
+		Queue<Node> q = new LinkedList<>();
+		q.offer(root);
+		breadthFirstSearch(q);
+		System.out.println("");
+	}
+	
+	public void breadthFirstSearch(Queue queue) {
+		if (queue.isEmpty()) {
+			return;
+		}
+		
+		Node node = (Node) queue.poll();
+		
+		System.out.println(node.data + " ");
+		if (node.left != null) {
+			queue.offer(node.left);
+		}
+		if (node.right != null) {
+			queue.offer(node.right);
+		}
+		breadthFirstSearch(queue);
+	}
+	
 	// This method goes through the tree until it finds the value, returning true
 	public boolean lookup(int data) {
 		return(lookup(root, data));
@@ -169,7 +289,6 @@ public class BinaryTree {
 		if (node == null) {
 			return(false);
 		}
-		
 		if (data == node.data) {
 			return(true);
 		} else if (data<node.data) {
