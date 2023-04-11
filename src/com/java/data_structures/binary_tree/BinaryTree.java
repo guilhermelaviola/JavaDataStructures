@@ -180,7 +180,7 @@ public class BinaryTree {
 	}
 	
 	public void printBreadthCourse() {
-		
+		printBreadthCourse(root);
 	}
 	
 	public void printBreadthCourse(Node node) {
