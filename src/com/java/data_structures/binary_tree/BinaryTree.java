@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /*
- * The binary tree data structure in Java is not linear but rather, hierarchical.
+ * The binary tree value structure in Java is not linear but rather, hierarchical.
  * This means that the top-most element is the "root" of the tree, and all other
  * nodes connect to it. Each node in the tree can have up to two children.
  */
@@ -16,21 +16,20 @@ import java.util.Queue;
  * http://webdiis.unizar.es/asignaturas/EDA/AVLTree/avltree.html
  */
 public class BinaryTree {
-	
-	public static class Node {
-		Node left;
-		Node right;
-		int data;
-		
-		Node(int newData){
-			left = null;
-			right = null;
-			data = newData;
-		}
-	}
 	// Root node. It'll be null for an empty tree.
 	private Node root;
 	
+	public static class Node {
+		private Node left;
+		private Node right;
+		private int value;
+		
+		Node(int newvalue){
+			left = null;
+			right = null;
+			value = newvalue;
+		}
+	}	
 	/*
 	 * NODE
 	 * It's a binary tree built from the Node internal class.
@@ -46,28 +45,28 @@ public class BinaryTree {
 	}
 	
 	/*
-	 * Inserting data into the tree
+	 * Inserting value into the tree
 	 * This is a recursive process, you can notice it's done in two steps.
 	 * The user doesn't know where the node will be placed, but the whole
 	 * process will be shown at the end.
 	 */
-	public void insert(int data) {
-		root = insert(root, data);
+	public void insert(int value) {
+		root = insert(root, value);
 	}
 	
 	/* Here is the method responsible for the recursive insertion, given a
 	 * reference for a node, it'll search for a place recursively and it'll
-	 * insert the data once it finds the place referenced by null. This method
+	 * insert the value once it finds the place referenced by null. This method
 	 * return the location where the new node is at.
 	 */
-	private Node insert(Node node, int data) {
+	private Node insert(Node node, int value) {
 		if (node == null) {
-			node = new Node(data);
+			node = new Node(value);
 		}else {
-			if (data < node.data) {
-				node.left = insert(node.left, data);
+			if (value < node.value) {
+				node.left = insert(node.left, value);
 			}else {
-				node.right = insert(node.right,data);
+				node.right = insert(node.right,value);
 			}
 		}
 		return(node);
@@ -82,7 +81,7 @@ public class BinaryTree {
 		if (root == null) {
 			return;
 		}
-		System.out.println(root.data + " ");
+		System.out.println(root.value + " ");
 		preOrder(root.left);
 		preOrder(root.right);
 	}
@@ -97,7 +96,7 @@ public class BinaryTree {
 			return;
 		}
 		preOrder(root.left);
-		System.out.println(root.data + " ");
+		System.out.println(root.value + " ");
 		preOrder(root.right);
 	}
 	
@@ -112,7 +111,7 @@ public class BinaryTree {
 		}
 		postOrder(root.left);
 		postOrder(root.right);
-		System.out.println(root.data + " ");
+		System.out.println(root.value + " ");
 	}
 	
 	public int findMin() {
@@ -121,7 +120,7 @@ public class BinaryTree {
 	
 	public int findMin(Node root) {
 		if (root.left == null) {
-			return root.data;
+			return root.value;
 		}
 		return findMin(root.left);
 	}
@@ -132,7 +131,7 @@ public class BinaryTree {
 	
 	public int findMax(Node root) {
 		if (root.right == null) {
-			return root.data;
+			return root.value;
 		}
 		return findMax(root.right);
 	}
@@ -162,20 +161,20 @@ public class BinaryTree {
 		}
 	}
 	
-	public boolean contains(int data) {
-		return contains(data, root);
+	public boolean contains(int value) {
+		return contains(value, root);
 	}
 	
-	public boolean contains(int data, Node root) {
+	public boolean contains(int value, Node root) {
 		if (root == null) {
 			return false;
 		}
-		if (data == root.data) {
+		if (value == root.value) {
 			return true;
-		}else if (data < root.data) {
-			return contains(data, root.left);
+		}else if (value < root.value) {
+			return contains(value, root.left);
 		}else {
-			return contains(data, root.right);
+			return contains(value, root.right);
 		}
 	}
 	
@@ -198,7 +197,7 @@ public class BinaryTree {
 				breadth.add(visitor.right);
 				copy.add(visitor.right);
 			}
-			System.out.println(visitor.data + " ");
+			System.out.println(visitor.value + " ");
 		}
 		System.out.println("\nEmpty queue? " + breadth.isEmpty());
 		System.out.println("Empty copied queue? " + copy.isEmpty());
@@ -213,17 +212,17 @@ public class BinaryTree {
 		Queue<Node> breadth = new LinkedList<>();
 		Queue<Integer> def = new LinkedList<>();
 		breadth.add(root);
-		def.add(root.data);
+		def.add(root.value);
 		Node visitor = null;
 		while (!breadth.isEmpty()) {
 			visitor = breadth.remove();
 			if (visitor.left != null) {
 				breadth.add(visitor.left);
-				def.add(visitor.left.data);
+				def.add(visitor.left.value);
 			}
 			if (visitor.right != null) {
 				breadth.add(visitor.right);
-				def.add(visitor.right.data);
+				def.add(visitor.right.value);
 			}
 		}
 		return def;
@@ -251,7 +250,7 @@ public class BinaryTree {
 			if (visitor.right != null) {
 				breadth.add(visitor.right);
 			}
-			System.out.println("[" + visitor.data + ", " + FB(visitor) + "] ");
+			System.out.println("[" + visitor.value + ", " + FB(visitor) + "] ");
 		}
 	}
 	
@@ -269,7 +268,7 @@ public class BinaryTree {
 		
 		Node node = (Node) queue.poll();
 		
-		System.out.println(node.data + " ");
+		System.out.println(node.value + " ");
 		if (node.left != null) {
 			queue.offer(node.left);
 		}
@@ -280,21 +279,21 @@ public class BinaryTree {
 	}
 	
 	// This method goes through the tree until it finds the value, returning true
-	public boolean lookup(int data) {
-		return(lookup(root, data));
+	public boolean lookup(int value) {
+		return(lookup(root, value));
 	}
 	
 	// Again, starting from the main root and descending recursively.
-	private boolean lookup(Node node, int data) {
+	private boolean lookup(Node node, int value) {
 		if (node == null) {
 			return(false);
 		}
-		if (data == node.data) {
+		if (value == node.value) {
 			return(true);
-		} else if (data<node.data) {
-			return(lookup(node.left, data));
+		} else if (value<node.value) {
+			return(lookup(node.left, value));
 		}else {
-			return(lookup(node.right, data));
+			return(lookup(node.right, value));
 		}
 	}
 	

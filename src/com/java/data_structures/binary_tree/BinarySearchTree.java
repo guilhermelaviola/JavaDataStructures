@@ -13,7 +13,7 @@ public class BinarySearchTree {
 		bst.inOrder();
 		bst.postOrder();
 		bst.findMin();
-		bst.findMax(null);
+		//bst.findMax(null);
 		bst.size();
 		bst.maxDepth();
 		bst.contains(0);
