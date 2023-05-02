@@ -1,6 +1,10 @@
 # JavaDataStructures
 Examples of Linear and Hierarchical Data Structures in Java (Stack, Queue, LinkedList and HashMap).
 
+## What are Data Structures?
+A data structure is a specialized format for organizing, processing, retrieving and storing data. There are several basic and advanced types of data structures, all designed to arrange data to suit a specific purpose. Data structures make it easy for users to access and work with the data they need in appropriate ways.
+![image](https://user-images.githubusercontent.com/31170255/235691790-dc54f91f-209c-4112-a5c3-aaf1622c167b.png)
+
 ## Linear
 A linear data structure is one where data items are arranged in a linear fashion. Each member is attached to its neighboring elements. The structure permits single-level data storage because the data elements are stored in a linear fashion. The data can be traversed in one run.
 
