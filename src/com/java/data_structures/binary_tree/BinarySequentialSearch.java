@@ -6,7 +6,7 @@ public class BinarySequentialSearch {
 	
 	public static void main(String[] args) {
 		Random r = new Random(30);
-		int[] a new int[20];
+		int[] a = new int[20];
 		for (int i=0; i<20; i++) {
 			a[i] = r.nextInt(100);
 		}
@@ -15,7 +15,25 @@ public class BinarySequentialSearch {
 			System.out.println(a[i] + " ");
 		}
 		System.out.println("");
+		quickSort(a);
 		
+		for (int i=0; i<20; i++) {
+			System.out.println(a[i] + " ");
+		}
+		System.out.println("");
+		quickSort(a);
+		
+		for (int i=0; i<20; i++) {
+			System.out.println(a[i] + " ");
+		}
+		System.out.println("");
+		System.out.println(binarySearch(a, 31));
+		System.out.println(counter);
+		System.out.println(sequentialSearchRecursive(a, 56));
+	}
+	
+	public static int sequentialSearchRecursive(int[] v, int searched) {
+		return sequentialSearchRecursive(v, 0, v.length-1, searched);
 	}
 	
 	public static int sequentialSearchRecursive(int[] v, int start, int end, int searched) {
@@ -28,8 +46,8 @@ public class BinarySequentialSearch {
 		return sequentialSearchRecursive(v, start, end, searched);
 	}
 	
-	public int binarySearch(int[] v, int start, int end, int searched) {
-		return binarySearch(v, start, v.length-1, searched);
+	public static int binarySearch(int[] v, int searched) {
+		return binarySearch(v, 0, v.length-1, searched);
 	}
 	
 	public static int counter = 0;
@@ -50,5 +68,32 @@ public class BinarySequentialSearch {
 			return binarySearch(v, start, end, searched);
 		}
 		return pos;
+	}
+	
+	public static void quickSort(int[] v) {
+		quickSort(v, 0, v.length-1);
+	}
+	
+	public static void quickSort(int[] v, int start, int end) {
+		int mid;
+		if (start < end){
+			mid = partition(v, start, end);
+			quickSort(v, start, mid);
+			quickSort(v, mid+1, end);
+		}
+	}
+	
+	public static int partition(int[] v, int start, int end) {
+		int pivot = v[start];
+		int top = start;
+		for (int i = start+1; i <= end; i++) {
+			if (v[i] < pivot) {
+				v[top] = v[i];
+				v[i] = v[top+1];
+				top++;
+			}
+		}
+		v[top] = pivot;
+		return top;
 	}
 }
