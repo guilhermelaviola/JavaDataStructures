@@ -1,4 +1,4 @@
-package com.java.data_structures.linear.Queue;
+package com.java.data_structures.linear.Queue.palindrome;
 
 import java.util.LinkedList;
 import java.util.Queue;
