@@ -8,11 +8,11 @@ public class Array {
 	public Array(int row, int column) {
 		this.row = row;
 		this.column = column;
-		this.array = array;
+		array = new double[row][column];
 	}
 
 	public void setArray(double[][] a) throws MyException {
-		if (row != a.length || row != a[0].length) {
+		if (row != a.length || column != a[0].length) {
 			throw new MyException("Arrays with different sizes.");
 		}
 		for (int i = 0; i < row; i++) {
@@ -74,7 +74,7 @@ public class Array {
 			for (int j = 0; i < column; j++) {
 				s += array[i][j] + "\t";
 			}
-			s += "\t";
+			s += "\n";
 		}
 		return s;
 	}
