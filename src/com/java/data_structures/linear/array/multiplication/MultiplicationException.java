@@ -1,4 +1,4 @@
-package com.java.data_structures.linear.array;
+package com.java.data_structures.linear.array.multiplication;
 
 public class MultiplicationException extends Exception {
 	public MultiplicationException(String message) {
