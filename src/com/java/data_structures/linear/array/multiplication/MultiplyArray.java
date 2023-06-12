@@ -1,13 +1,12 @@
 package com.java.data_structures.linear.array.multiplication;
 
 import java.awt.event.ActionEvent;
-
 import javax.swing.JFrame;
 
 public class MultiplyArray extends JFrame {
 	
 	/**
-     * Creates new form MultiplicarMatrizes
+     * Creates new form MultiplyArray
      */
 	public MultiplyArray() {
 		initComponents();
