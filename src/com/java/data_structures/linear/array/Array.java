@@ -53,7 +53,7 @@ public class Array {
 		return sum;
 	}
 	
-	public Array subtractWith(Array array2) throws MyException {
+	public Array subtractFrom(Array array2) throws MyException {
 		if (row != array2.getRow() || column != array2.getColumn()) {
 			throw new MyException("Arrays with different sizes.");
 		}
@@ -71,7 +71,7 @@ public class Array {
 	public String toString() {
 		String s = "";
 		for (int i = 0; i < row; i++) {
-			for (int j = 0; i < column; j++) {
+			for (int j = 0; j < column; j++) {
 				s += array[i][j] + "\t";
 			}
 			s += "\n";
