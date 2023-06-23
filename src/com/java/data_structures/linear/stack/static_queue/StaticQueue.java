@@ -1,5 +1,6 @@
 package com.java.data_structures.linear.stack.static_queue;
 
+// Static Queue with recursion
 public class StaticQueue {
 	int amount;
 	String[] stack;
